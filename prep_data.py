@@ -56,7 +56,7 @@ def get_round_data(rounds_ids = range(2, 18), hard_refresh = False):
 
 
     for round in rounds_ids:
-        cachepath = os.path.join("data", str(round))
+        cachepath = os.path.join("data", "{}.json".format(round))
         if(not os.path.exists(cachepath)) or hard_refresh:
             players_resp = requests.get('https://fs-api.swush.com/games/536/rounds/{}/statistics?appid=holdet&culture=da'.format(round))
             rounds[round] = json.loads(players_resp.text)
